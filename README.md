@@ -10,7 +10,6 @@ This repository contains the solution to the technical case study provided by Op
 2. [Tasks](#tasks)
 3. [Folder Structure](#folder-structure)
 4. [Usage](#usage)
-5. [Contact](#contact)
 
 ## Project Overview
 
@@ -29,8 +28,8 @@ The `index.ts` file serves as the main entry point for executing and displaying 
 ## Folder Structure
 
 The project is organized as follows:
- The `swapAndVolCount` folder contains the solution for Task 1.
-- The `TVL-task` folder contains the solution for Task 2.
+ The `swapAndVolCount` folder contains the solution for Task 1. \
+ The `TVL-task` folder contains the solution for Task 2.
 
 ## Usage
 
@@ -39,22 +38,23 @@ The project is organized as follows:
    - Execute the `dataFetch.js` file. using `node dataFetch.js` command.
    - Review the console output for the total Daily Volume in USD and Daily Swap counts.
    - sample output:
-   `Daily Swap counts: 10843`
+   `Daily Swap counts: 10843` \
    `Daily Volume in USD: 7599.60049054358516172111432593543`
 
 2. **Last 5 Days of TVL by User by Pool USD Balance**
    - Navigate to the `TVL-task` folder.
    - Execute the `index.ts` file. This can be done by `npm run compile` followed by `npm run start`.
    - Review the console output for the last 5 days of TVL by User by Pool USD balance.
-   - sample output:```
-    Date: 1710115200, Total TVL: 1276704.4943336393
-    ======================
-    Date: 1710028800, Total TVL: 1309668.7733044988
-    ======================
-    Date: 1709942400, Total TVL: 1302216.5607864647
-    ======================
-    Date: 1709856000, Total TVL: 1310142.5734764873
-    ======================
-    Date: 1709769600, Total TVL: 1567893.186083837
-    ======================
+   - sample output:
+   ``` 
+    Date: 1710115200, Total TVL: 1276704.4943336393  \
+    ====================== \
+    Date: 1710028800, Total TVL: 1309668.7733044988 \
+    ====================== \
+    Date: 1709942400, Total TVL: 1302216.5607864647 \
+    ====================== \
+    Date: 1709856000, Total TVL: 1310142.5734764873 \
+    ====================== \
+    Date: 1709769600, Total TVL: 1567893.186083837 \
+    ====================== \
     Total TVL in USD of last 5 : 6766625.587984927 ```
