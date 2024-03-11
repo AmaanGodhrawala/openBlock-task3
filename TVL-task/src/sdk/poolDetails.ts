@@ -16,7 +16,6 @@ export async function fetchPoolData(): Promise<PoolDataEntry[]> {
         date
         pool {
           id
-          # Add other pool-related fields if needed
         }
         tvlUSD
       }
