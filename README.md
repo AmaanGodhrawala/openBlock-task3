@@ -45,16 +45,18 @@ The project is organized as follows:
    - Navigate to the `TVL-task` folder.
    - Execute the `index.ts` file. This can be done by `npm run compile` followed by `npm run start`.
    - Review the console output for the last 5 days of TVL by User by Pool USD balance.
+   - Also, in `index.ts` I made a variable `let lastNdays = 5` here you can change according to your requirement to get last n days of TVL value.
    - sample output:
    ``` 
-    Date: 1710115200, Total TVL: 1276704.4943336393  \
-    ====================== \
-    Date: 1710028800, Total TVL: 1309668.7733044988 \
-    ====================== \
-    Date: 1709942400, Total TVL: 1302216.5607864647 \
-    ====================== \
-    Date: 1709856000, Total TVL: 1310142.5734764873 \
-    ====================== \
-    Date: 1709769600, Total TVL: 1567893.186083837 \
-    ====================== \
-    Total TVL in USD of last 5 : 6766625.587984927 ```
+    Date: 1710115200, Total TVL: 1276704.4943336393  
+    ====================== 
+    Date: 1710028800, Total TVL: 1309668.7733044988 
+    ====================== 
+    Date: 1709942400, Total TVL: 1302216.5607864647
+    ====================== 
+    Date: 1709856000, Total TVL: 1310142.5734764873 
+    ====================== 
+    Date: 1709769600, Total TVL: 1567893.186083837 
+    ====================== 
+    Total TVL in USD of last 5 : 6766625.587984927
+   ```
