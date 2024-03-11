@@ -1,0 +1,100 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+BigInt.prototype.toJSON = function () {
+    return this.toString();
+};
+const poolDetails_1 = require("./sdk/poolDetails");
+//Uncomment the following lines to test the getPositionAtBlock function
+// const position = getPositionAtBlock(
+//         0, // block number 0 for latest block
+//         2, // position id
+//         CHAINS.MODE, // chain id
+//         PROTOCOLS.SUPSWAP, // protocol
+//         AMM_TYPES.UNISWAPV3 // amm type
+//     );
+// position.then((position) => {
+//     // print response
+//     const result = getPositionDetailsFromPosition(position);
+//     console.log(`${JSON.stringify(result,null, 4)}
+//     `)
+// });
+// const getData = async () => {
+// const snapshotBlocks = [
+//   0
+// ];
+// for(let block of snapshotBlocks) {
+//   const positions = await getPositionsForAddressByPoolAtBlock(
+//     block, // block number 0 for latest block
+//     "",  //pass empty string to remove filter based on user address
+//     "",  //pass empty string to remove filter based on pool address
+//     CHAINS.MODE, // chain id
+//     PROTOCOLS.SUPSWAP, // protocol
+//     AMM_TYPES.UNISWAPV3 // amm type
+//   );
+//  console.log(`Block: ${block}`);
+//     // print response
+//     console.log("Positions: ", positions.length)
+//     let positionsWithUSDValue = positions.map((position) => {
+//       return getPositionDetailsFromPosition(position);
+//     });
+//     let lpValueByUsers = getLPValueByUserAndPoolFromPositions(positionsWithUSDValue);
+//     let onlyUsersWithLPValue = new Map<string, BigNumber>();
+//     lpValueByUsers.forEach((value, key) => {
+//       let lpValue: Map<string, BigNumber> = value;
+//       let total = new BigNumber(0);
+//       lpValue.forEach((value, key) => {
+//         total = total.plus(value);
+//       }
+//       );
+//       onlyUsersWithLPValue.set(key, total);
+//     });
+//     //sort onlyUsersWithLPValue by value
+//     let sortedLpValueByUsers = new Map([...onlyUsersWithLPValue.entries()].sort((a, b) => {
+//       return b[1].comparedTo(a[1]);
+//     }));
+//     let protocolTotal = new BigNumber(0);
+//     sortedLpValueByUsers.forEach((value, key) => {
+//       protocolTotal = protocolTotal.plus(value);
+//     });
+//     sortedLpValueByUsers.forEach((value, key) => {
+//       console.log(`User: ${key}`);
+//       let lpValue: Map<string, BigNumber> = lpValueByUsers.get(key)||new Map();
+//       let total = new BigNumber(0);
+//       lpValue.forEach((value, key) => {
+//         console.log(`Pool: ${key} LP Value: ${value.toString()}`);
+//         total = total.plus(value);
+//       }
+//       );
+//       console.log("User's total LP", total.toString());
+//       console.log("---------------------------------------------------");
+//     });
+//     console.log("Protocol's total LP", protocolTotal.toString());
+// }
+// }
+// getData().then(() => {
+//   console.log("Done");
+// });
+// getPrice(new BigNumber('1579427897588720602142863095414958'), 6, 18); //Uniswap
+// getPrice(new BigNumber('3968729022398277600000000'), 18, 6); //SupSwap
+let lastNdays = 5;
+const main = async () => {
+    try {
+        const poolData = await (0, poolDetails_1.fetchPoolData)();
+        const totalTvlByDate = (0, poolDetails_1.calculateTotalTvlByDate)(poolData);
+        let count = 0;
+        let totalTVLUSD = 0;
+        totalTvlByDate.forEach((total, date) => {
+            if (count < lastNdays) {
+                totalTVLUSD += total;
+                console.log(`Date: ${date}, Total TVL: ${total}`);
+                console.log("======================");
+                count++;
+            }
+        });
+        console.log(`Total TVL in USD of last ${lastNdays} : ` + totalTVLUSD);
+    }
+    catch (error) {
+        console.error('Error fetching or processing data:', error);
+    }
+};
+main();
